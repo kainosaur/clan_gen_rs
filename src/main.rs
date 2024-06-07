@@ -17,7 +17,7 @@ fn main() {
         .add_systems(Startup, setup)
         .add_plugins(AssetLoaderPlugin)
         .add_systems(PostStartup, create_random_cat)
-        .add_systems(Update, refresh_cat_layers)
+        .add_systems(Update, refresh_all_layers)
         .run();
 }
 

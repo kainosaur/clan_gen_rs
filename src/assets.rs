@@ -7,6 +7,7 @@ use crate::GameState;
 pub struct CatAssets {
     pub pelt_color: Handle<Image>,
     pub lineart: Handle<Image>,
+    pub eye_color: Handle<Image>,
 }
 
 pub struct AssetLoaderPlugin;
@@ -23,5 +24,6 @@ fn load_assets(mut cat_assets: ResMut<CatAssets>, asset_server: Res<AssetServer>
     *cat_assets = CatAssets {
         pelt_color: asset_server.load("classiccolours.png"),
         lineart: asset_server.load("lineart.png"),
+        eye_color: asset_server.load("eyes.png"),
     }
 }
