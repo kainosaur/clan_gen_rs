@@ -2,6 +2,7 @@ use bevy::{prelude::*, render::view::visibility};
 use names::*;
 use rand::{seq::SliceRandom, thread_rng};
 use sprites::*;
+use super::GameState;
 
 use crate::CatAssets;
 
@@ -9,6 +10,17 @@ pub mod names;
 pub mod sprites;
 
 pub struct CatsPlugin;
+
+impl Plugin for CatsPlugin {
+    fn build(&self, app: &mut App) {
+        app
+            .add_systems(OnEnter(GameState::Menu), create_random_cat)
+            .add_systems(Update,
+             (refresh_all_layers,)
+             .run_if(in_state(GameState::Menu))
+            );
+    }
+}
 
 #[derive(Bundle)]
 pub struct CatBundle {
